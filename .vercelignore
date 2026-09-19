@@ -1,0 +1,14 @@
+# Local Python state
+.venv/
+venv/
+**/__pycache__/
+.pytest_cache/
+*.pyc
+
+# Local-only artifacts
+*.zip
+scratch/
+
+# Repository metadata
+.git/
+.github/
