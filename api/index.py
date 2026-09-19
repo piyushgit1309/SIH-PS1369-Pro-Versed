@@ -5,6 +5,8 @@ Exports the FastAPI `app` instance for Vercel's Python runtime.
 import os
 import sys
 
+from fastapi import FastAPI
+
 # Configure system path to locate backend and Pro-Versed packages
 current_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.dirname(current_dir)
@@ -23,8 +25,6 @@ if "SEED_DEMO_DATA" not in os.environ:
 if "ENVIRONMENT" not in os.environ:
     os.environ["ENVIRONMENT"] = "production"
 
-try:
-    from backend.main import app
-except ImportError:
-    import main
-    app = main.app
+from backend.main import app as backend_app
+
+app: FastAPI = backend_app
